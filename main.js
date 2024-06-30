@@ -1,136 +1,40 @@
-// 1. Book class
-class Book {
-  constructor(date, guestbook, user) {
-    this.date = date
-    this.guestbook = guestbook
-    this.user = user
-  }
-}
+document.addEventListener('DOMContentLoaded', function () {
+  const bookList = document.getElementById('book-list')
 
-// 2. UI class: UI를 다루는 기능
-class UI {
-  // 2.1 Display books
-  static displayBooks() {
-    const books = Store.getBooks()
+  // 로컬 스토리지에서 방명록 항목 로드
+  const books = JSON.parse(localStorage.getItem('guestbooks')) || []
 
-    books.forEach((book) => UI.addBookToList(book))
-  }
+  books.forEach(function (book) {
+    addBookToList(book)
+  })
 
-  // 2.2 Add book to UI
-  static addBookToList(book) {
-    const list = document.getElementById('book-list')
+  // 방명록 항목을 목록에 추가하는 함수
+  function addBookToList(book) {
     const row = document.createElement('tr')
     row.innerHTML = `
-    <td>${book.date}</td>
-    <td>${book.guestbook}</td>
-    <td>${book.user}</td>
-    <td> <a href="#" class="btn btn-danger btn-sm delete"> X </a> </td>
+      <td><a href="/detail.html?title=${encodeURIComponent(book.title)}">${
+      book.title
+    }</a></td>
+      <td>${book.username}</td>
+      <td>${book.date}</td>
+      <td><button class="btn btn-danger btn-sm delete">삭제</button></td>
     `
-    list.appendChild(row)
+    bookList.appendChild(row)
   }
 
-  // 2.3 Delete book from UI
-  static deleteBook(target) {
-    // console.log(target);
-    target.parentElement.parentElement.remove()
-  }
+  // 삭제 버튼 클릭 이벤트
+  bookList.addEventListener('click', function (e) {
+    if (e.target.classList.contains('delete')) {
+      const row = e.target.parentElement.parentElement
+      const title = row.children[0].textContent
 
-  // 2.4 알림메시지 표시
-  static showAlert(message, className) {
-    const div = document.createElement('div')
-    div.className = `alert alert-${className}`
-    div.appendChild(document.createTextNode(message))
-    const container = document.querySelector('.container')
-    const form = document.querySelector('#book-form')
-    container.insertBefore(div, form)
+      // 로컬 스토리지에서 항목 삭제
+      const books = JSON.parse(localStorage.getItem('guestbooks')) || []
+      const updatedBooks = books.filter((book) => book.title !== title)
+      localStorage.setItem('guestbooks', JSON.stringify(updatedBooks))
 
-    setTimeout(() => document.querySelector('.alert').remove(), 2000)
-  }
-
-  // 2.5 Clear Fields
-  static clearFields() {
-    document.querySelector('#date').value = ''
-    document.querySelector('#guestbook').value = ''
-    document.querySelector('#user').value = ''
-  }
-}
-
-// 3. 사용자 Event 처리 기능
-
-// 3.1 Event: Display books (페이지 초기 로드시 실행)
-document.addEventListener('DOMContentLoaded', UI.displayBooks)
-
-// 3.2 Event: Add a book
-document.querySelector('#book-form').addEventListener('submit', (e) => {
-  e.preventDefault()
-  // console.log(e.target);
-
-  const date = document.querySelector('#date').value
-  const guestbook = document.querySelector('#guestbook').value
-  const user = document.querySelector('#user').value
-
-  // validation, 입력 검증
-  if (date === '' || guestbook === '' || user === '') {
-    // alert("모든 필드를 입력해 주세요...");
-    UI.showAlert('모든 필드를 입력해 주세요', 'danger')
-  } else {
-    const book = new Book(date, guestbook, user)
-
-    // 화면 테이블에 추가
-    UI.addBookToList(book)
-
-    // Store에 저장하기
-    Store.addBook(book)
-
-    UI.showAlert('방명록이 저장되었습니다', 'success')
-
-    // Clear field
-    UI.clearFields()
-  }
-})
-
-// 3.3 Event: Remove a book
-document.querySelector('#book-list').addEventListener('click', (e) => {
-  // Remove book from UI
-  UI.deleteBook(e.target)
-
-  console.log(e.target.parentElement.previousElementSibling.textContent)
-  Store.removeBook(e.target.parentElement.previousElementSibling.textContent)
-
-  // 메시지 표시
-  UI.showAlert('방명록을 삭제했습니다', 'info')
-})
-
-// 4. Store class : localStorage에 저장하는 기능
-class Store {
-  // 4.1 localStorage에서 방명록 정보를 읽어옴
-  static getBooks() {
-    let books
-    if (localStorage.getItem('books') === null) {
-      books = []
-    } else {
-      books = JSON.parse(localStorage.getItem('books'))
+      // 화면에서 항목 삭제
+      row.remove()
     }
-    return books
-  }
-
-  // 4.2 localStorage에 새로운 방명록을 저장함
-  static addBook(book) {
-    const books = Store.getBooks()
-    books.push(book)
-    localStorage.setItem('books', JSON.stringify(books))
-  }
-
-  // 4.3 localStorage에서 방명록 정보를 지움
-  static removeBook(user) {
-    const books = Store.getBooks()
-
-    books.forEach((book, index) => {
-      if (book.user === user) {
-        books.splice(index, 1)
-      }
-    })
-
-    localStorage.setItem('books', JSON.stringify(books))
-  }
-}
+  })
+})
