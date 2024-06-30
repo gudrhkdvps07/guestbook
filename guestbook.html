@@ -22,7 +22,7 @@
 
       <form id="book-form">
         <div class="form-group">
-          <label for="title">Title</label>
+          <label for="title">제목</label>
           <input
             type="text"
             id="title"
@@ -31,7 +31,7 @@
           />
         </div>
         <div class="form-group">
-          <label for="username">Username</label>
+          <label for="username">작성자</label>
           <input
             type="text"
             id="username"
@@ -40,7 +40,7 @@
           />
         </div>
         <div class="form-group">
-          <label for="guestbook">Guestbook Entry</label>
+          <label for="guestbook">방명록</label>
           <textarea
             id="guestbook"
             class="form-control"
@@ -49,14 +49,16 @@
           ></textarea>
         </div>
         <button type="submit" class="btn btn-primary btn-block">
-          Add Guestbook Entry
+          방명록 남기기
         </button>
       </form>
       <div id="book-list" class="mt-4"></div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <!-- 부트스트랩4에서는 얘가 필요하다 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <!-- 툴팁(마우스 오버시 나오는 정보창)과 팝오버(상호작용)의 위치를 제어 -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="app.js"></script>
   </body>
