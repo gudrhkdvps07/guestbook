@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const title = document.getElementById('title').value
     const username = document.getElementById('username').value
     const guestbook = document.getElementById('guestbook').value
-    const date = new Date().toLocaleDateString()
+    const date = new Date().toLocaleDateString('ko-KR')
 
     if (title === '' || username === '' || guestbook === '') {
       alert('모든 필드를 입력하세요.')
