@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function () {
     row.innerHTML = `
       <td class="text-center"><a href="/detail.html?title=${encodeURIComponent(
         book.title
-      )}">${book.title}</a></td>
+      )}" class="text-dark fw-bold text-decoration-none">${book.title}</a></td>
       <td class="text-center">${book.username}</td>
       <td class="text-center">${book.date}</td>
       <td class="text-center"><button class="btn btn-danger btn-sm delete">삭제</button></td>
