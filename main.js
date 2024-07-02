@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function () {
       )}" class="text-dark fw-bold text-decoration-none">${book.title}</a></td>
       <td class="text-center">${book.username}</td>
       <td class="text-center">${book.date}</td>
-      <td class="text-center"><button class="btn btn-danger btn-sm delete">삭제</button></td>
+      <td class="text-center"><button class="btn  btn-sm delete text-white fw-bold" style="background-color:gray;">삭제</button></td>
     `
     bookList.appendChild(row)
   }

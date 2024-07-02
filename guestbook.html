@@ -8,13 +8,36 @@
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     />
+    <style>
+      button {
+        font-weight: bold !important;
+      }
+
+      a {
+        color: rgb(147, 171, 206);
+      }
+
+      a:hover {
+        color: gray;
+        text-decoration: none;
+      }
+
+      .form-group {
+        margin-bottom: 25px;
+      }
+    </style>
   </head>
   <body>
-    <div class="container mt-5">
-      <h1 class="text-center">Guestbook</h1>
-
+    <div
+      class="container mt-5 text-center border border-secondary rounded-3 p-5 pb-7 shadow p-3"
+    >
+      <h1 class="dispaly-4 mt-4 fw-bold">
+        <i class="fa-solid fa-book" style="color: rgb(147, 171, 206)"></i>
+        Visitor <span style="color: rgb(147, 171, 206)">Messages </span>
+      </h1>
       <br />
-      <button type="button" class="btn float-right">
+
+      <button type="button" class="btn float-right text-decoration-none">
         <a href="/index.html">홈으로</a>
       </button>
       <br />
@@ -48,7 +71,11 @@
             placeholder="여기에 방명록을 남겨보세요"
           ></textarea>
         </div>
-        <button type="submit" class="btn btn-primary btn-block">
+        <button
+          type="submit"
+          class="btn btn-block text-white"
+          style="background-color: rgb(147, 171, 206)"
+        >
           방명록 남기기
         </button>
       </form>

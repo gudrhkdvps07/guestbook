@@ -10,19 +10,59 @@
       integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
       crossorigin="anonymous"
     />
+    <style>
+      .header-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .header-container h1 {
+        flex-grow: 1;
+      }
+      .down {
+        margin-top: 60px;
+      }
+
+      @media screen and (max-width: 766px) {
+        h1 {
+          font-size: 30px;
+        }
+
+        a {
+          width: 90px;
+        }
+      }
+    </style>
   </head>
   <body>
-    <div class="container mt-5">
-      <h1 class="text-center">Guestbook Detail</h1>
-      <a
-        href="/index.html"
-        class="btn btn-secondary mb-3 text-white text-decoration-none"
-        >홈으로</a
-      >
-      <div id="book-detail" class="mt-4"></div>
+    <div
+      class="container mt-5 border border-secondary rounded-3 p-5 pb-7 shadow p-3 mb-5"
+    >
+      <div class="header-container">
+        <h1 class="display-4 mt-4 fw-bold">
+          <i
+            class="fa-solid fa-magnifying-glass"
+            style="color: rgb(147, 171, 206)"
+          ></i>
+          Visitor's Log <span style="color: rgb(147, 171, 206)">Detail </span>
+        </h1>
+        <a
+          href="/index.html"
+          class="btn mt-4 mb-2 text-white text-decoration-none"
+          style="background-color: rgb(147, 171, 206) !important"
+          >홈으로</a
+        >
+      </div>
+
+      <div id="book-detail" class="down"></div>
     </div>
 
     <script src="detail.js"></script>
+    <script
+      src="https://kit.fontawesome.com/7050d28073.js"
+      crossorigin="anonymous"
+    ></script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
