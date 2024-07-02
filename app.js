@@ -25,6 +25,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // 폼 초기화
     bookForm.reset()
+
+    // index.html로 리디렉션
+    window.location.href = 'index.html'
   })
 
   // 로컬 스토리지에 방명록 항목 추가

@@ -12,12 +12,12 @@ document.addEventListener('DOMContentLoaded', function () {
   function addBookToList(book) {
     const row = document.createElement('tr')
     row.innerHTML = `
-      <td><a href="/detail.html?title=${encodeURIComponent(book.title)}">${
-      book.title
-    }</a></td>
-      <td>${book.username}</td>
-      <td>${book.date}</td>
-      <td><button class="btn btn-danger btn-sm delete">삭제</button></td>
+      <td class="text-center"><a href="/detail.html?title=${encodeURIComponent(
+        book.title
+      )}">${book.title}</a></td>
+      <td class="text-center">${book.username}</td>
+      <td class="text-center">${book.date}</td>
+      <td class="text-center"><button class="btn btn-danger btn-sm delete">삭제</button></td>
     `
     bookList.appendChild(row)
   }

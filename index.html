@@ -16,28 +16,28 @@
     />
   </head>
   <body>
-    <div class="container mt-4">
-      <h1 class="dispaly-4 text-center">
+    <div class="container mt-4 text-center">
+      <h1 class="dispaly-4">
         <i class="bi bi-book-half text-primary"></i>
         My<span class="text-primary"> GuestBook</span>List
       </h1>
       <br /><br />
 
       <div class="d-grid gap-2">
-        <button type="button" class="btn btn-primary">
-          <a href="/guestbook.html" class="text-white text-decoration-none"
-            >글쓰기</a
-          >
-        </button>
+        <a
+          href="/guestbook.html"
+          class="text-white text-decoration-none btn btn-primary"
+          >글쓰기</a
+        >
       </div>
 
       <table class="table table-striped mt-4">
         <thead class="table-dark">
           <tr>
-            <th>제목</th>
-            <th>작성자</th>
-            <th>날짜</th>
-            <th>ㅤ</th>
+            <th class="text-center">제목</th>
+            <th class="text-center">작성자</th>
+            <th class="text-center">날짜</th>
+            <th class="text-center">ㅤ</th>
           </tr>
         </thead>
         <tbody id="book-list">
